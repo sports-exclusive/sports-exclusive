@@ -6,7 +6,12 @@ let movies = [
   },
   {
     name: "IND vs SA",
-    des: "Virat Kohli is a mood.",
-    image: "https://pbs.twimg.com/media/GDABSC5bwAARYQ0?format=jpg&name=900x900",
+    des: "Indian team's group picture after the historic win at Capetown ",
+    image: "https://cdn.jsdelivr.net/gh/KratosRepo/picx-images-hosting@master/20240107/GDAgRPna4AAlLEz.1jfvr9ktg4v4.webp",
+  },
+  {
+    name: "IND vs SA",
+    des: "The Class of Kohli, King is here 👑",
+    image: "https://pbs.twimg.com/media/GC6pPjGboAAxxP0?format=jpg&name=large",
   },
 ];
