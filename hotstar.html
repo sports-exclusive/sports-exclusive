@@ -1,0 +1,724 @@
+        <!DOCTYPE html>
+        <html lang="en">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+            <!-- ------------------ Title ------------------ -->
+            <title>Kratos+  - Watch Sports Online</title>
+
+            <!-- ------------------ Style Sheet ------------------ -->
+          <style>
+          /* ---------------- Google Fonts ---------------- */
+            /* Google Fonts */
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+            /* Root */
+            :root {
+                --background: #0c111b;
+                --text-color: #fff;
+                --button: #1f80e0;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                width: 100%;
+                background: var(--background);
+                position: relative;
+                font-family: "Roboto", sans-serif;
+            }
+
+            /* Navbar */
+            .navbar {
+                width: 100%;
+                height: 80px;
+                position: fixed;
+                top: 0;
+                left: 0;
+                padding: 0 4%;
+                background: rgba(12, 17, 27, 0.8);
+                z-index: 9;
+                display: flex;
+                align-items: center;
+            }
+
+            .logo {
+                height: 80px;
+                width: 140px;
+                background: transparent;
+            }
+
+            .nav-links {
+                margin-top: 10px;
+                display: flex;
+                list-style: none;
+            }
+
+            .nav-items a {
+                text-decoration: none;
+                color: rgba(255, 255, 255, 0.8);
+                opacity: 0.9;
+                font-size: 16px;
+                font-weight: 400;
+                padding: 20px 15px 20px;
+            }
+
+            .nav-items a:hover {
+                color: var(--text-color);
+            }
+
+            .right-container {
+                display: flex;
+                flex-direction: column; /* Updated to column layout for small screens */
+                align-items: center;
+                margin-left: auto;
+                padding: 10px;
+            }
+
+            /* Search Box */
+            .search-box {
+                border: none;
+                border-bottom: 1px solid #aaa;
+                background: transparent;
+                outline: none;
+                height: 30px;
+                color: var(--text-color);
+                width: 80%;
+                text-transform: capitalize;
+                font-size: 16px;
+                font-weight: 500;
+                transition: 0.5s;
+            }
+
+            .search-box:focus {
+                width: 100%;
+                border-color: var(--button);
+            }
+
+            /* Button Styling */
+            .sub-btn {
+                background: var(--button);
+                height: 30px;
+                padding: 0 20px;
+                color: var(--text-color);
+                border-radius: 5px;
+                border: none;
+                outline: none;
+                text-transform: uppercase;
+                font-weight: 700;
+                font-size: 12px;
+                margin: 10px 0;
+            }
+
+            .login-link {
+                color: var(--text-color);
+                opacity: 0.9;
+                text-transform: uppercase;
+                font-size: 15px;
+                font-weight: 700;
+                text-decoration: none;
+                margin-bottom: 10px;
+            }
+
+            .carousel-container {
+                position: relative;
+                width: 100%;
+                height: 500px;
+                padding: 20px 0;
+                overflow-x: hidden;
+                margin-top: 80px;
+            }
+
+            .carousel {
+                display: flex;
+                width: 92%;
+                height: 100%;
+                position: relative;
+                margin: auto;
+            }
+
+            .slider {
+                flex: 0 0 auto;
+                margin-right: 30px;
+                position: relative;
+                background: rgba(0, 0, 0, 0.5);
+                border-radius: 5px;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                transition: 1s;
+                overflow: hidden;
+            }
+
+            .slider img {
+                width: 70%;
+                min-height: 100%;
+                object-fit: cover;
+                display: block;
+                margin-left: auto;
+            }
+
+            .slide-content {
+                position: absolute;
+                width: 50%;
+                height: 100%;
+                z-index: 2;
+                background: linear-gradient(to right, #030b17 80%, #0c111b00);
+                color: var(--text-color);
+                top: 0;
+            }
+
+            .movie-title {
+                padding-left: 50px;
+                text-transform: capitalize;
+                margin-top: 80px;
+            }
+
+            .movie-des {
+                width: 80%;
+                line-height: 30px;
+                padding-left: 50px;
+                margin-top: 30px;
+                opacity: 0.8;
+            }
+
+            .video-card-container {
+                position: relative;
+                width: 92%;
+                margin: auto;
+                height: 10vw;
+                display: flex;
+                margin-bottom: 20px;
+                justify-content: space-between;
+            }
+
+            .video-card {
+                position: relative;
+                min-width: calc(100%/5 - 10px);
+                width: calc(100%/5 - 10px);
+                height: 100%;
+                border-radius: 5px;
+                overflow: hidden;
+                background: #030b17;
+            }
+
+            .video-card-image,
+            .card-video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .card-video {
+                position: absolute;
+            }
+
+            .video-card:hover .video-card-image {
+                display: none;
+            }
+
+            .title {
+                color: var(--text-color);
+                opacity: 0.9;
+                padding-left: 4%;
+                text-transform: capitalize;
+                font-size: 22px;
+                font-weight: 500;
+            }
+
+            .movies-list {
+                width: 100%;
+                height: 220px;
+                position: relative;
+                margin: 10px 0 20px;
+            }
+
+            .card-container {
+                position: relative;
+                width: 92%;
+                padding-left: 10px;
+                height: 220px;
+                display: flex;
+                margin: 0 auto;
+                align-items: center;
+                overflow-x: auto;
+                overflow-y: visible;
+                scroll-behavior: smooth;
+            }
+
+            .card-container::-webkit-scrollbar {
+                display: none;
+            }
+
+            .card {
+                position: relative;
+                min-width: 150px;
+                width: 150px;
+                height: 200px;
+                border-radius: 5x; /* Remove rounded corners */
+                overflow: hidden;
+                margin-right: 10px;
+                transition: 0.5s;
+            }
+
+            .card-img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain; /* Ensure proper fit without distortion */
+                background-color: transparent !important; /* Ensure transparency is applied */
+            }
+
+            .card .logo-container {
+                height: 100px; /* Set a fixed height for the logo container */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .card:hover {
+                transform: scale(1.1);
+                background-color: transparent; /* Ensure transparency on hover */
+            }
+
+            .card:hover .card-body {
+                opacity: 1;
+            }
+            
+
+            .card-body {
+                opacity: 0;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 2;
+                background: linear-gradient(to bottom, rgba(4, 8, 15, 0), #192133 90%);
+                padding: 10px;
+                transition: 0.5s;
+            }
+
+            .channel-name {
+                height: 30%; /* Adjusted height for the channel name container */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(to bottom, rgba(4, 8, 15, 0), #192133 90%);
+            }
+            .name {
+                color: var(--text-color);
+                font-size: 15px;
+                font-weight: 500;
+                text-transform: capitalize;
+                margin-top: 60%;
+            }
+
+            .des {
+                color: var(--text-color);
+                opacity: 0.8;
+                margin: 5px 0;
+                font-weight: 500;
+                font-size: 12px;
+            }
+
+
+
+
+
+            .pre-btn,
+            .nxt-btn {
+                position: absolute;
+                top: 0;
+                width: 5%;
+                height: 100%;
+                z-index: 2;
+                border: none;
+                cursor: pointer;
+                outline: none;
+            }
+
+            .pre-btn {
+                left: 0;
+                background: linear-gradient(to right, #0c111b 0%, #0c111b00);
+            }
+
+            .nxt-btn {
+                right: 0;
+                background: linear-gradient(to right, #0c111b 0%, #0c111b00);
+            }
+
+            .pre-btn img,
+            .nxt-btn img {
+                width: 15px;
+                height: 20px;
+                opacity: 0;
+            }
+
+            .pre-btn:hover img,
+            .nxt-btn:hover img {
+                opacity: 1;
+            }
+            /* ---------------- Responsive Adjustments ---------------- */
+            @media only screen and (max-width: 768px) {
+                .nav-links {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 10px;
+                    margin-top: 20px;
+                }
+
+                .logo {
+                    width: 100%;
+                }
+
+                .search-box {
+                    width: 100%;
+                    margin-top: 10px;
+                }
+
+                .social-icons {
+                    margin-top: 10px;
+                }
+
+                .card:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+                }
+            }
+
+            /* Card hover effect */
+            .card:hover {
+                transform: scale(1.05);
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            }
+
+            /* GitHub and Telegram Button Styles */
+            .github-button {
+                display: inline-flex;
+                align-items: center;
+                padding: 10px 20px;
+                font-size: 16px;
+                font-weight: bold;
+                text-decoration: none;
+                color: #fff;
+                background-color: #4CAF50;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+                margin-bottom: 10px; /* Adjusted margin for better mobile view */
+            }
+
+            .github-button:hover {
+                background-color: #45a049;
+            }
+
+            .github-icon {
+                width: 30px;
+                height: 30px;
+                margin-right: 10px;
+            }
+
+            .telegram-button {
+                display: inline-flex;
+                align-items: center;
+                padding: 10px 20px;
+                font-size: 16px;
+                font-weight: bold;
+                text-decoration: none;
+                color: #fff;
+                background-color: #0088cc;
+                border-radius: 5px;
+                margin-left: 10px;
+                transition: background-color 0.3s ease;
+            }
+
+            .telegram-button:hover {
+                background-color: #006699;
+            }
+
+            .telegram-icon {
+                width: 30px;
+                height: 30px;
+                margin-right: 10px;
+            }
+
+            /* Social Icons Below Carousel */
+            .social-icons-below-carousel {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-top: 20px;
+            }
+
+            .social-icons-below-carousel .message {
+                color: #fff;
+                font-weight: bold;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+
+            /* Icons in the same row */
+            .social-icon-row {
+                display: flex;
+                justify-content: center;
+            }
+
+            .social-icon {
+                display: flex;
+                align-items: center;
+                padding: 5px;
+                text-decoration: none;
+                color: #fff;
+                margin-right: 10px;
+            }
+
+            .telegram-icon,
+            .github-icon {
+                width: 30px;
+                height: 30px;
+            }
+
+          </style>
+        </head>
+
+        <body>
+            <!-- ------------------ Navbar ------------------ -->
+            <nav class="navbar">
+                <img src="./assets/img/logo (1).svg" class="logo" alt="Logo">
+                <ul class="nav-links">
+
+                    <li class="nav-items"><a href="#">Sports</a></li>
+
+                    <li class="icon"><a href="#"></a></li>
+                </ul>
+
+              
+
+            </nav>
+
+            <!-- ------------------ Carousel ------------------ -->
+            <div class="carousel-container">
+                <div class="carousel">
+                    <!-- <div class="slider">
+                        <div class="slide-content">
+                            <h1 class="movie-title">loki</h1>
+                            <p class="movie-des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam distinctio molestiae quis praesentium cum obcaecati eveniet voluptates exercitationem eum accusantium.</p>
+                        </div>
+                        <img src="./assets/img/slider 1.png" alt="Slider">
+                    </div> -->
+                </div>
+            </div>
+          <!-- ------------------ Telegram and GitHub Icons Below Carousel ------------------ -->
+          <div class="social-icons-below-carousel">
+              <p class="message">Join us on Telegram and Star us on GitHub for updates!</p>
+
+              <!-- Icons in the same row -->
+              <div class="social-icon-row">
+                  <!-- Telegram Icon -->
+                  <a href="https://t.me/bigcchubchat/11" class="social-icon" target="_blank">
+                      <img src="https://cdn.jsdelivr.net/gh/KratosRepo/picx-images-hosting@master/20240104/Telegram_logo.svg.4prhaum59ki0.webp" alt="Telegram" class="telegram-icon">
+                  </a>
+
+                  <!-- GitHub Icon -->
+                  <a href="https://github.com/KratosRepo/cricket-live" class="social-icon" target="_blank">
+                      <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" class="github-icon">
+                  </a>
+              </div>
+          </div>
+
+
+
+          <!-- ------------------ Recommendation ------------------ -->
+          <h1 class="title">Indian channels</h1>
+          <div class="movies-list">
+              <button class="pre-btn"><img src="./assets/img/pre.png" alt=""></button>
+              <button class="nxt-btn"><img src="./assets/img/nxt.png" alt=""></button>
+              <div class="card-container">
+                  <!-- Add your card content for Indian channels here -->
+                  <div class="card">
+                    <a href="https://kratosrepo.github.io/cricket-live/sports18HD" class="site-card" _self="_blank">
+                      <img src="https://cdn.jsdelivr.net/gh/KratosRepo/picx-images-hosting@master/20240105/Sports18_1_HD.4gj2dorrwoi0.webp" class="card-img" alt="Sports18 1 HD">
+                      <div class="card-body">
+                          <h2 class="name">Sports18 1 HD</h2>
+                      </div>
+                  </div>
+
+                  <div class="card">
+                    <a href="https://kratosrepo.github.io/cricket-live/sports18HD(alt)" class="site-card" _self="_blank">
+                      <img src="https://cdn.jsdelivr.net/gh/KratosRepo/picx-images-hosting@master/20240105/Sports18_1_HD.4gj2dorrwoi0.webp" class="card-img" alt="Sports18 1 HD(alt)">
+                      <div class="card-body">
+                          <h2 class="name">Sports18 1 HD(alt)</h2>
+                      </div>
+                  </div>
+                <div class="card">
+                  <a href="https://kratosrepo.github.io/cricket-live/star" class="site-card" _self="_blank">
+                    <img src="https://cdn.jsdelivr.net/gh/kratos877/picx-images-hosting@master/20231211/image-Content-60-j5fdr6a0-m1.4pi4jxp1lme0.webp" class="card-img" alt="Sports 1 Hindi HD">
+                    <div class="card-body">
+                        <h2 class="name">Sports 1 Hindi HD</h2>
+                    </div>
+                </div>
+
+                <div class="card">
+                  <a href="https://kratosrepo.github.io/cricket-live/starEn" class="site-card" _self="_blank">
+                    <img src="https://cdn.jsdelivr.net/gh/kratos877/picx-images-hosting@master/20231211/image-Content-8301-j7hc0820-m1.1uex3y269i74.webp" class="card-img" alt="Star Sports 1 HD">
+                    <div class="card-body">
+                        <h2 class="name">Star Sports 1 HD</h2>
+                    </div>
+                </div>
+
+                <div class="card">
+                  <a href="https://kratosrepo.github.io/cricket-live/starsports2" class="site-card" _self="_blank">
+                    <img src="https://cdn.jsdelivr.net/gh/kratos877/picx-images-hosting@master/20231211/image-Content-1021-j5nj3c68-m1.s44m84pq1cw.webp" class="card-img" alt="Star Sports 2 HD">
+                    <div class="card-body">
+                        <h2 class="name">Star Sports 2 HD</h2>
+                    </div>
+                </div>
+
+                  <!-- Add similar blocks for other Indian channels -->
+              </div>
+          </div>
+           </a>
+
+          <h1 class="title">Sky Sports channels</h1>
+          <div class="movies-list">
+              <button class="pre-btn"><img src="./assets/img/pre.png" alt=""></button>
+              <button class="nxt-btn"><img src="./assets/img/nxt.png" alt=""></button>
+              <div class="card-container">
+                  <!-- Add your card content for Sky Sports channels here -->
+                  <div class="card">
+                    <a href="https://kratosrepo.github.io/cricket-live/sky" class="site-card" _self="_blank">
+                      <img src="https://cdn.jsdelivr.net/gh/kratos877/picx-images-hosting@master/20231211/ss.3beydx3uxhu0.webp" class="card-img" alt="Sky Sports Cricket">
+                      <div class="card-body">
+                          <h2 class="name">Sky Sports Cricket</h2>
+                      </div>
+                  </div>
+
+                  <div class="card">
+                    <a href="https://kratosrepo.github.io/cricket-live/skymain" class="site-card" _self="_blank">
+                      <img src="https://cdn.jsdelivr.net/gh/kratos877/picx-images-hosting@master/20231227/Sky-sports-main-event.2jqhzbjq3t20.webp" class="card-img" alt="Sky sports Main Event">
+                      <div class="card-body">
+                          <h2 class="name">Sky sports Main Event</h2>
+                      </div>
+                  </div>
+                <div class="card">
+                  <a href="https://kratosrepo.github.io/cricket-live/skymix" class="site-card" _self="_blank">
+                    <img src="https://cdn.jsdelivr.net/gh/kratos877/picx-images-hosting@master/20231211/download.3d1jhhdehdw0.webp" class="card-img" alt="Sky sports Mix">
+                    <div class="card-body">
+                        <h2 class="name">Sky sports Mix</h2>
+                    </div>
+                </div>
+
+                  <!-- Add similar blocks for other Sky Sports channels -->
+              </div>
+          </div>
+           </a>
+
+          <h1 class="title">World sports</h1>
+          <div class="movies-list">
+              <button class="pre-btn"><img src="./assets/img/pre.png" alt=""></button>
+              <button class="nxt-btn"><img src="./assets/img/nxt.png" alt=""></button>
+              <div class="card-container">
+                  <!-- Add your card content for World sports here -->
+                  <div class="card">
+                    <a href="https://astro-cricket.pages.dev/" class="site-card" _self="_blank">
+                      <img src="https://cdn.jsdelivr.net/gh/kratos877/picx-images-hosting@master/20231211/Astro_Cricket.2wl2uo8phos.webp" class="card-img" alt="Astro Cricket">
+                      <div class="card-body">
+                          <h2 class="name">Astro Cricket</h2>
+                      </div>
+                  </div>
+
+                  <div class="card">
+                    <a href="https://kratosrepo.github.io/cricket-live/wllohd" class="site-card" _self="_blank">
+                      <img src="https://cdn.jsdelivr.net/gh/kratos877/picx-images-hosting@master/20231211/channels4_profile.4n3319rcpdw0.webp" class="card-img" alt="Willow Cricket">
+                      <div class="card-body">
+                          <h2 class="name">Willow Cricket</h2>
+                      </div>
+                  </div>
+
+                  <!-- Add similar blocks for other World sports channels -->
+              </div>
+          </div>
+           </a>
+
+          <h1 class="title">FOX sports</h1>
+          <div class="movies-list">
+              <button class="pre-btn"><img src="./assets/img/pre.png" alt=""></button>
+              <button class="nxt-btn"><img src="./assets/img/nxt.png" alt=""></button>
+              <div class="card-container">
+                  <!-- Add your card content for FOX sports here -->
+                  <div class="card">
+                    <a href="https://kratosrepo.github.io/cricket-live/fox501" class="site-card" _self="_blank">
+                      <img src="https://cdn.jsdelivr.net/gh/KratosRepo/picx-images-hosting@master/20240105/505.9oa80paqmnc.webp" class="card-img" alt="Fox 501 HD">
+                      <div class="card-body">
+                          <h2 class="name">Fox 501 HD</h2>
+                      </div>
+                  </div>
+
+                  <div class="card">
+                    <a href="https://kratosrepo.github.io/cricket-live/fox505" class="site-card" _self="_blank">
+                      <img src="https://cdn.jsdelivr.net/gh/KratosRepo/picx-images-hosting@master/20240105/501.au16dt96m8w.webp" class="card-img" alt="Fox 505 HD">
+                      <div class="card-body">
+                          <h2 class="name">Fox 505 HD</h2>
+                      </div>
+                  </div>
+
+                  <!-- Add similar blocks for other FOX sports channels -->
+              </div>
+          </div>
+           </a>
+
+          <h1 class="title">TNT sports</h1>
+          <div class="movies-list">
+              <button class="pre-btn"><img src="./assets/img/pre.png" alt=""></button>
+              <button class="nxt-btn"><img src="./assets/img/nxt.png" alt=""></button>
+              <div class="card-container">
+                  <!-- Add your card content for TNT sports here -->
+                  <div class="card">
+                    <a href="https://kratosrepo.github.io/cricket-live/tnt1" class="site-card" _self="_blank">
+                      <img src="https://cdn.jsdelivr.net/gh/kratos877/picx-images-hosting@master/20231211/d90c87a7-968b-47b4-bf66-98686bcd043b.377ppyiqdm00.webp" class="card-img" alt="TNT Sports 1">
+                      <div class="card-body">
+                          <h2 class="name">TNT Sports 1</h2>
+                      </div>
+                  </div>
+
+                  <div class="card">
+                    <a href="https://kratosrepo.github.io/cricket-live/tnt2" class="site-card" _self="_blank">
+                      <img src="https://cdn.jsdelivr.net/gh/kratos877/picx-images-hosting@master/20231211/a2cef6c1-542c-4895-968e-db40ccf822c8.5as2t2co6100.webp" class="card-img" alt="TNT Sports 2">
+                      <div class="card-body">
+                          <h2 class="name">TNT Sports 2</h2>
+                      </div>
+                  </div>
+
+                  <div class="card">
+                    <a href="https://kratosrepo.github.io/cricket-live/tnt2" class="site-card" _self="_blank">
+                      <img src="https://cdn.jsdelivr.net/gh/kratos877/picx-images-hosting@master/20231211/2c51d406-d2dc-49b0-87fa-d240b8baf8ba.31sd10cfzxc0.webp" class="card-img" alt="TNT Sports 3">
+                      <div class="card-body">
+                          <h2 class="name">TNT Sports 3</h2>
+                      </div>
+                  </div>
+
+                  <!-- Add similar blocks for other TNT sports channels -->
+              </div>
+          </div>
+
+          <!-- Add similar sections for other categories if needed -->
+
+          <!-- ------------------ JavaScript ------------------ -->
+          <script src="./assets/js/data.js"></script>
+          <script src="./assets/js/main.js"></script>
+          </body>
+          </html>
