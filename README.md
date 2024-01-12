@@ -1,3 +1,3 @@
 # cricket-live
-http://raw.githack.com/KratosRepo/cricket-live/main/index.html
+https://sports-exclusive.vercel.app/index.html
 
