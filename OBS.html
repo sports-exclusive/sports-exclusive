@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Cloner</title>
+</head>
+<body>
+  <h1>Website Cloner</h1>
+  <form id="websiteForm">
+    <label for="websiteUrl">Enter Website URL:</label>
+    <input type="text" id="websiteUrl" required>
+    <button type="submit">Clone Website</button>
+  </form>
+
+  <script>
+    document.getElementById('websiteForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      var websiteUrl = document.getElementById('websiteUrl').value;
+
+      // Create a new XMLHttpRequest object
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', websiteUrl, true);
+      xhr.responseType = 'blob';
+
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          // Create a zip file
+          var zip = new JSZip();
+          zip.file('index.html', xhr.response);
+
+          // Download the zip file
+          zip.generateAsync({ type: 'blob' }).then(function(content) {
+            var link = document.createElement('a');
+            link.href = URL.createObjectURL(content);
+            link.download = 'website_clone.zip';
+            link.click();
+          });
+        }
+      };
+
+      xhr.send();
+    });
+  </script>
+</body>
+</html>
