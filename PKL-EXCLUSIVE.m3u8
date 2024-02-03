@@ -1,1 +1,16 @@
-j
+#EXTM3U
+#EXT-X-TARGETDURATION:8000000
+#EXT-X-VERSION:3000
+#EXT-X-MEDIA-SEQUENCE:21457
+#EXT-X-ALLOW-CACHE:YES
+#EXT-X-PROGRAM-DATE-TIME:2023-06-07T03:56:28Z
+#EXTINF:7.920,
+http://ky-iptv.com/live/yolotest10/5311757413/2682514.m3u8
+#EXTINF:8.000,
+http://ky-iptv.com/live/yolotest10/5311757413/2682514.m3u8
+#EXTINF:8.000,
+http://ky-iptv.com/live/yolotest10/5311757413/2682514.m3u8
+#EXTINF:8.000,
+http://ky-iptv.com/live/yolotest10/5311757413/2682514.m3u8
+#EXTINF:8.000,
+http://ky-iptv.com/live/yolotest10/5311757413/2682514.m3u8
