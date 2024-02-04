@@ -1,34 +1,51 @@
-#EXTM3U
-#EXT-X-VERSION:3
-#EXT-X-MEDIA-SEQUENCE:2670
-#EXT-X-TARGETDURATION:13
-#EXTINF:8.440,
-https://double3.totototorina.com:999/hls/bbtsp3-2670.ts
-#EXTINF:9.200,
-https://double3.totototorina.com:999/hls/bbtsp3-2671.ts
-#EXTINF:10.000,
-https://double3.totototorina.com:999/hls/bbtsp3-2672.ts
-#EXTINF:12.840,
-https://double3.totototorina.com:999/hls/bbtsp3-2673.ts
-#EXTINF:7.680,
-https://double3.totototorina.com:999/hls/bbtsp3-2674.ts
-#EXTINF:10.000,
-https://double3.totototorina.com:999/hls/bbtsp3-2675.ts
-#EXTINF:10.000,
-https://double3.totototorina.com:999/hls/bbtsp3-2676.ts
-#EXTINF:10.000,
-https://double3.totototorina.com:999/hls/bbtsp3-2677.ts
-#EXTINF:4.920,
-https://double3.totototorina.com:999/hls/bbtsp3-2678.ts
-#EXTINF:10.760,
-https://double3.totototorina.com:999/hls/bbtsp3-2679.ts
-#EXTINF:6.040,
-https://double3.totototorina.com:999/hls/bbtsp3-2680.ts
-#EXTINF:10.000,
-https://double3.totototorina.com:999/hls/bbtsp3-2681.ts
-#EXTINF:10.000,
-https://double3.totototorina.com:999/hls/bbtsp3-2682.ts
-#EXTINF:10.000,
-https://double3.totototorina.com:999/hls/bbtsp3-2683.ts
-#EXTINF:4.120,
-https://double3.totototorina.com:999/hls/bbtsp3-2684.ts
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HLS Video Player</title>
+    <script src="https://cdn.jsdelivr.net/jwplayer/8.10.2/jwplayer.js"></script>
+    <script>jwplayer.key = "YOUR_JWPLAYER_LICENSE_KEY";</script>
+</head>
+<body>
+    <div id="player"></div>
+
+    <script>
+        var player = jwplayer("player");
+        player.setup({
+            file: "https://lamsom.co.uk/crichd/crichd.php?id=bbtsp3&e=.m3u8",
+            type: "hls",
+            width: "100%",
+            aspectratio: "16:9",
+            autostart: true,
+            primary: "html5",
+            controls: true,
+            displaytitle: true,
+            displaydescription: true,
+            captions: {
+                color: "#ffffff",
+                fontSize: 14,
+                backgroundOpacity: 0,
+                edgeStyle: "raised"
+            },
+            localization: {
+                play: "Play",
+                pause: "Pause",
+                fullscreen: "Fullscreen",
+                exitFullscreen: "Exit Fullscreen",
+                mute: "Mute",
+                unmute: "Unmute",
+                volume: "Volume",
+                playbackRate: "Playback Rate",
+                quality: "Quality",
+                captions: "Captions",
+                related: "Related Videos",
+                more: "More Videos",
+                settings: "Settings",
+                off: "Off",
+                auto: "Auto",
+                captionsOn: "Captions On",
+                captionsOff: "Captions Off"
+            }
+        });
+    </script>
+</body>
+</html>
