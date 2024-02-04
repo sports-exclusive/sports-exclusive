@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HLS Video Player</title>
+    <script src="https://cdn.jsdelivr.net/jwplayer/8.10.2/jwplayer.js"></script>
+    <script>jwplayer.key = "YOUR_JWPLAYER_LICENSE_KEY";</script>
+</head>
+<body>
+    <div id="player"></div>
+
+    <script>
+        var player = jwplayer("player");
+        player.setup({
+            file: "https://lamsom.co.uk/crichd/crichd.php?id=bbtsp3&e=.m3u8",
+            type: "hls",
+            width: "100%",
+            aspectratio: "16:9",
+            autostart: true,
+            primary: "html5",
+            controls: true,
+            displaytitle: true,
+            displaydescription: true,
+            captions: {
+                color: "#ffffff",
+                fontSize: 14,
+                backgroundOpacity: 0,
+                edgeStyle: "raised"
+            },
+            localization: {
+                play: "Play",
+                pause: "Pause",
+                fullscreen: "Fullscreen",
+                exitFullscreen: "Exit Fullscreen",
+                mute: "Mute",
+                unmute: "Unmute",
+                volume: "Volume",
+                playbackRate: "Playback Rate",
+                quality: "Quality",
+                captions: "Captions",
+                related: "Related Videos",
+                more: "More Videos",
+                settings: "Settings",
+                off: "Off",
+                auto: "Auto",
+                captionsOn: "Captions On",
+                captionsOff: "Captions Off"
+            }
+        });
+    </script>
+</body>
+</html>
