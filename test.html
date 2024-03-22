@@ -29,8 +29,8 @@
           currentDate = new Date();
     currentDate.setHours(currentDate.getHours() - 3);
     
-    const ddmmyy = `${currentDate.getDate().toString().padStart(2, '0')}${(currentDate.getMonth() + 1).toString().padStart(2, '0')}${currentDate.getFullYear().toString().substr(-2)}`,
-          m3u8URL = `http://prod-ent-live-gm.jiocinema.com/hls/live/2109712/hd_akamai_androidmob_avc_tam_ipl_s1_m1${ddmmyy}/master.m3u8`;
+    const ddmmyy = ${currentDate.getDate().toString().padStart(2, '0')}${(currentDate.getMonth() + 1).toString().padStart(2, '0')}${currentDate.getFullYear().toString().substr(-2)},
+          m3u8URL = `http://prod-ent-live-gm.jiocinema.com/hls/live/2100323/hd_akamai_androidmob_avc_hin_ipl_s1_m1${ddmmyy}/master.m3u8`;
 
     source.src = m3u8URL;
 
