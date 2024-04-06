@@ -1,0 +1,16 @@
+#camera-stream {
+    width: 100%;
+    border: 3px solid black;
+}
+
+#capture-btn {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#capture-btn:hover {
+    background-color: #45a049;
+}
