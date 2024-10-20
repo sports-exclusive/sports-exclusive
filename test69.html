@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full-Screen iFrame with Disabled External Links</title>
+    <title>Full-Screen iFrame with Disabled Buttons (Except Video Players)</title>
     <style>
         /* Remove margins and padding to make iframe full screen */
         * {
@@ -27,37 +27,29 @@
     <iframe id="myIframe" src="https://s7.24cwc.com/" allowfullscreen></iframe>
 
     <script>
-        // Function to check if the URL is external
-        function isExternalLink(url) {
-            const linkHost = new URL(url).hostname;
-            const currentHost = window.location.hostname;
-            return linkHost !== currentHost;
-        }
-
-        // Function to disable external links in iframe
-        function disableExternalLinks(iframe) {
+        // Function to disable all buttons except video player controls
+        function disableButtonsExceptVideos(iframe) {
             const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
 
-            // Loop through all anchor tags in the iframe
-            const links = iframeDocument.getElementsByTagName('a');
-            for (let i = 0; i < links.length; i++) {
-                const link = links[i];
-                const href = link.getAttribute('href');
+            // Disable all buttons except video player controls
+            const buttons = iframeDocument.getElementsByTagName('button');
+            for (let i = 0; i < buttons.length; i++) {
+                const button = buttons[i];
 
-                // If the link is external, prevent the default behavior
-                if (href && isExternalLink(href)) {
-                    link.addEventListener('click', function(event) {
-                        event.preventDefault();
-                        alert('External links are disabled.');
-                    });
+                // Check if the button is inside a video player (using HTML5 <video> tag)
+                const isInVideoPlayer = button.closest('video') !== null;
+
+                // Disable the button if it's not inside a video player
+                if (!isInVideoPlayer) {
+                    button.disabled = true;
                 }
             }
         }
 
-        // Apply the disableExternalLinks function after iframe loads
+        // Apply the disableButtonsExceptVideos function after iframe loads
         const iframe = document.getElementById('myIframe');
         iframe.onload = function() {
-            disableExternalLinks(iframe);
+            disableButtonsExceptVideos(iframe);
         };
     </script>
 </body>
