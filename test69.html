@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full-Screen iFrame</title>
+    <title>Full-Screen iFrame with Disabled External Links</title>
     <style>
         /* Remove margins and padding to make iframe full screen */
         * {
@@ -24,6 +24,41 @@
     </style>
 </head>
 <body>
-    <iframe src="https://s7.24cwc.com/" allowfullscreen></iframe>
+    <iframe id="myIframe" src="https://s7.24cwc.com/" allowfullscreen></iframe>
+
+    <script>
+        // Function to check if the URL is external
+        function isExternalLink(url) {
+            const linkHost = new URL(url).hostname;
+            const currentHost = window.location.hostname;
+            return linkHost !== currentHost;
+        }
+
+        // Function to disable external links in iframe
+        function disableExternalLinks(iframe) {
+            const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+
+            // Loop through all anchor tags in the iframe
+            const links = iframeDocument.getElementsByTagName('a');
+            for (let i = 0; i < links.length; i++) {
+                const link = links[i];
+                const href = link.getAttribute('href');
+
+                // If the link is external, prevent the default behavior
+                if (href && isExternalLink(href)) {
+                    link.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        alert('External links are disabled.');
+                    });
+                }
+            }
+        }
+
+        // Apply the disableExternalLinks function after iframe loads
+        const iframe = document.getElementById('myIframe');
+        iframe.onload = function() {
+            disableExternalLinks(iframe);
+        };
+    </script>
 </body>
 </html>
